@@ -582,7 +582,7 @@ public class InventoryUtils {
         // Picked up or swapped items to the cursor, grab a reference to the slot that
         // the items came from
         // Note that we are only checking the item here!
-        if (isStackEmpty(stackCursor) == false && stackCursor.isItemEqual(stackInCursorLast) == false
+        if (isStackEmpty(stackCursor) == false && ItemStack.areItemsEqual(stackCursor, stackInCursorLast) == false
                 && sourceSlotCandidate != null) {
             sourceSlot = new WeakReference<>(sourceSlotCandidate.get());
         }
@@ -1782,7 +1782,7 @@ public class InventoryUtils {
     }
 
     public static boolean areStacksEqual(ItemStack stack1, ItemStack stack2) {
-        return stack1.isEmpty() == false && stack1.isItemEqual(stack2) && ItemStack.areNbtEqual(stack1, stack2);
+        return stack1.isEmpty() == false && ItemStack.areItemsEqual(stack1, stack2) && ItemStack.areEqual(stack1, stack2);
     }
 
     private static boolean areSlotsInSameInventory(Slot slot1, Slot slot2) {
